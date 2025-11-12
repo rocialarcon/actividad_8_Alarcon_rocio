@@ -40,7 +40,7 @@ begin
     estimulo_y_evaluacion : process
         variable prev : std_logic_vector(31 downto 0);
     begin
-        -- Estado inicial: dirección 0 y primer flanco
+        -- Estado inicial: direccion 0 y primer flanco
         addr <= (others => '0');
         wait until rising_edge(clk);
         wait for 1 ns;
@@ -50,9 +50,9 @@ begin
         -- Pedimos dir 8 y verificamos salida registrada
         prev := dout;
         addr <= std_logic_vector(to_unsigned(8, addr'length));
-        wait for periodo/2;  -- aún sin flanco: debe mantenerse igual
+        wait for periodo/2;  
         assert dout = prev
-            report "La salida cambió antes del flanco (debe ser registrada)"
+            report "La salida cambio antes del flanco (debe ser registrada)"
             severity error;
 
         wait until rising_edge(clk);
@@ -61,8 +61,7 @@ begin
             report "Dir 8: valor distinto al esperado" severity error;
 
         --barrido
-        
-        for a in 0 to 11 loop
+        for a in 0 to 29 loop
             addr <= std_logic_vector(to_unsigned(a, addr'length));
             wait until rising_edge(clk);
             wait for 1 ns;
