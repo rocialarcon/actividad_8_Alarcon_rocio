@@ -3,20 +3,21 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_textio.all;
 use std.textio.all;
+use work.all;
 
 entity top is
     port (
         clk     : in  std_logic;
         x       : in std_logic_vector(7 downto 0);
         display : out std_logic_vector(6 downto 0);
-        h       : out std_logic;
+        h       : out std_logic
     );
 end entity top;
 
 architecture arch of top is
     signal addr_dout : std_logic;
     signal addr : std_logic_vector(3 downto 0);
-    signal we : std_logic_vector(3 downto 0);
+    signal we : std_logic;
     signal din : std_logic_vector(3 downto 0);
     signal dout : std_logic_vector(3 downto 0);
 
@@ -51,7 +52,7 @@ architecture arch of top is
             addr => addr,
             we => we,
             din => din,
-            dout => dout
+            dout => dout --arreglar  
         );
 
         addr_dout <= x(7);

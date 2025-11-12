@@ -18,7 +18,7 @@ entity ram_16x4 is
 end entity ram_16x4;
 
 architecture behavioral of ram_16x4 is
-    type ram_type is array (16 downto 0) of std_logic_vector(3 downto 0);
+    type ram_type is array (15 downto 0) of std_logic_vector(3 downto 0);
 
     impure function init_ram return ram_type is
         file ram_file : text;

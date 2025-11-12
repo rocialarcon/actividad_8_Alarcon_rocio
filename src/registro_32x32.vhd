@@ -40,6 +40,7 @@ architecture arch of registro_32x32 is
                 end if ;
             end loop ;
         end if ;
+        return reg_data;
     end function init_reg;
     
     signal reg : reg_type := init_reg;

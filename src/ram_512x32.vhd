@@ -41,11 +41,12 @@ architecture arch of ram_512x32 is
                     end if ;
                 end loop;   
             end if ;
+        return ram_data;
         end function init_ram;
     signal ram : ram_type := init_ram;
-    
+    begin
     dout_r <= ram(to_integer(unsigned(addr_r)));
-    --escritura
+    --escritura con mascara
     process(clk)
         variable current_word : std_logic_vector(31 downto 0);
         begin
